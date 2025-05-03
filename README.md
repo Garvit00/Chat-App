@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Real-Time Chat Application
 
-## Getting Started
+A full-stack real-time chat application built with React, Node.js, Express, Socket.IO, and MongoDB.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **User Authentication**: Register and login functionality
+- **Real-Time Messaging**: Instant message delivery using Socket.IO
+- **Online Users List**: See who's currently online
+- **Chat Rooms**: Join different topic-based rooms
+- **Private Messaging**: Direct messaging between users
+- **Typing Indicators**: See when someone is typing
+- **Message History**: Persistent chat history stored in MongoDB
+- **Responsive Design**: Works on desktop and mobile devices
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Frontend
+- React (Next.js App Router)
+- TailwindCSS for styling
+- Socket.IO client for real-time communication
+- shadcn/ui components
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Backend
+- Node.js with Express
+- Socket.IO for WebSocket communication
+- MongoDB for data persistence
+- bcryptjs for password hashing
 
-## Learn More
+## Setup Instructions
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
+- Node.js (v14 or higher)
+- MongoDB (local or Atlas)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository
+   \`\`\`
+   git clone https://github.com/yourusername/real-time-chat.git
+   cd real-time-chat
+   \`\`\`
 
-## Deploy on Vercel
+2. Install dependencies
+   \`\`\`
+   npm install
+   \`\`\`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Create a `.env` file in the root directory with the following variables:
+   \`\`\`
+   MONGODB_URI=your_mongodb_connection_string
+   MONGODB_DB=chat-app
+   NEXT_PUBLIC_API_URL=http://localhost:3001
+   \`\`\`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Start the development server
+   \`\`\`
+   # Start the backend server
+   npm run server
+   
+   # In a separate terminal, start the frontend
+   npm run dev
+   \`\`\`
+
+5. Open your browser and navigate to `http://localhost:3000`
+
+## Deployment
+
+This application can be deployed using services like Vercel for the frontend and Heroku for the backend. Make sure to set the appropriate environment variables in your deployment platform.
+
+## Future Improvements
+
+- Add message reactions
+- Implement file sharing
+- Add read receipts
+- Implement user profiles with avatars
+- Add message search functionality
+- Implement end-to-end encryption
+
