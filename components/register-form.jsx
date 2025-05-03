@@ -5,26 +5,24 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent } from "@/components/ui/card"
-import { toast } from "sonner"  // Import toast directly from sonner
+import { toast } from "sonner"
 
 export default function RegisterForm({ setUser }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [loading, setLoading] = useState(false)
-  // Remove this line - it's causing the error:
-  // const { toast } = Toaster()
   
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!username || !password || !confirmPassword) {
-      toast.error("Error", {  // Use this format
+      toast.error("Error", { 
         description: "Please fill in all fields"
       })
       return
     }
     if (password !== confirmPassword) {
-      toast.error("Error", {  // Use this format
+      toast.error("Error", { 
         description: "Passwords do not match"
       })
       return
@@ -46,11 +44,11 @@ export default function RegisterForm({ setUser }) {
       localStorage.setItem("chatUser", JSON.stringify(data.user))
       // Update user state
       setUser(data.user)
-      toast.success("Success", {  // Use this format
+      toast.success("Success", {
         description: "You have successfully registered"
       })
     } catch (error) {
-      toast.error("Error", {  // Use this format
+      toast.error("Error", {
         description: error.message || "Failed to register"
       })
     } finally {

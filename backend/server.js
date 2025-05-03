@@ -5,7 +5,7 @@ import { MongoClient } from "mongodb"
 import cors from "cors"
 import dotenv from "dotenv"
 
-dotenv.config()
+dotenv.config();
 
 const app = express()
 const server = http.createServer(app)
@@ -22,9 +22,10 @@ app.use(express.json())
 
 // MongoDB connection
 
-const MONGODB_URI = "mongodb+srv://GarvitChatApp:suJwJF4AkhOtZB11@chat-app.uvlt8kr.mongodb.net/chat-app?retryWrites=true&w=majority&ssl=true";
+const MONGODB_URI = process.env.MONGODB_URI
 console.log(MONGODB_URI)
-const MONGODB_DB = "chat-app"
+const MONGODB_DB = process.env.MONGODB_DB
+console.log(MONGODB_DB)
 
 let db
 
@@ -155,7 +156,8 @@ io.on("connection", (socket) => {
 })
 
 // Start server
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT
+console.log(PORT)
 
 connectToMongo().then(() => {
   server.listen(PORT, () => {

@@ -6,12 +6,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import LoginForm from "@/components/login-form"
 import RegisterForm from "@/components/register-form"
 import ChatInterface from "@/components/chat-interface"
-import { Toaster } from "@/components/ui/sonner"
+import { toast } from "sonner"
 
 export default function Home() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
-  const { toast } = Toaster()
 
   useEffect(() => {
     // Check if user is already logged in
@@ -29,9 +28,8 @@ export default function Home() {
   const handleLogout = () => {
     localStorage.removeItem("chatUser")
     setUser(null)
-    toast({
-      title: "Logged out",
-      description: "You have been successfully logged out",
+    toast.success("Success", {
+      description: "You have successfully logged out"
     })
   }
 
@@ -53,7 +51,7 @@ export default function Home() {
               <span className="text-sm text-gray-600">
                 Logged in as <span className="font-medium">{user.username}</span>
               </span>
-              <Button variant="outline" onClick={handleLogout}>
+              <Button variant="outline" onClick={handleLogout} className="text-gray-600 hover:text-red-500">
                 Logout
               </Button>
             </div>

@@ -18,7 +18,7 @@ export default function OnlineUsers({ users, onStartChat, activeChat, privateCha
             <Button
               key={user.userId}
               variant={activeChat.type === "private" && activeChat.id === user.userId ? "default" : "outline"}
-              className="w-full justify-between"
+              className="w-full justify-between text-gray-900 hover:text-blue-400"
               onClick={() => onStartChat(user.userId, user.username)}
             >
               <span className="flex items-center">

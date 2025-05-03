@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Badge } from "@/components/ui/badge"
-import { Toaster } from "@/components/ui/sonner"
+import { toast } from "@/components/ui/sonner"
 import { MessageSquare, Users, Send } from "lucide-react"
 import ChatMessage from "@/components/chat-message"
 import OnlineUsers from "@/components/online-users"
@@ -26,7 +26,6 @@ export default function ChatInterface({ user }) {
   const [loading, setLoading] = useState(true)
   const messagesEndRef = useRef(null)
   const typingTimeoutRef = useRef(null)
-  const { toast } = Toaster()
 
   // Initialize socket connection
   useEffect(() => {
@@ -94,7 +93,7 @@ export default function ChatInterface({ user }) {
         })
 
         if (activeChat.id !== senderId) {
-          toast({
+          toast.success("Sucess",{
             title: "New message",
             description: `${senderName}: ${newMessage.text.substring(0, 30)}${newMessage.text.length > 30 ? "..." : ""}`,
           })
@@ -297,7 +296,7 @@ export default function ChatInterface({ user }) {
                   <Button
                     key={room}
                     variant={activeChat.type === "room" && activeChat.id === room ? "default" : "outline"}
-                    className="w-full justify-start"
+                    className="w-full justify-start text-gray-900 hover:text-blue-400"
                     onClick={() => changeRoom(room)}
                   >
                     # {room}
